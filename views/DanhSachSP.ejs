@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        
+    </style>
+    <body>
+        <div>
+            <h1>Danh sách sản phẩm</h1>
+            <table>
+                <tr>
+                    <td>Mã sản phẩm</td>
+                    <td>Tên sản phẩm</td>
+                    <td>Số lượng</td>
+                    <td>Sửa</td>
+                </tr>
+                <% data.forEach(function(i){%>
+                    <tr>
+                        <td><%=i.MaSP%></td>
+                        <td><%=i.TenSP%></td>
+                        <td><%=i.SL%></td>
+                        <td>
+                            <a href="#"><button>Sửa Sản Phẩm</button></a>
+                        </td>
+                    </tr>
+                <%})%>  
+            </table>
+        </div>
+    </body>
+</html>
