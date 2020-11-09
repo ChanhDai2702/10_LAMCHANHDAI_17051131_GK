@@ -2,17 +2,8 @@ const express = require('express');
 const app = express();
 const port = 3000;
 var AWS = require('aws-sdk');
-var multer = require('multer');
-var storage = multer.diskStorage({
-    destination : function (req,file,cb){
-        cb(null,'/uploads');
-    },
-    filename: function (req,file,cb){
-        cb(null,file.originalname);
-    }
-})
- 
-var upload = multer({storage:storage})
+
+
 app.set("view engine","ejs");
 app.set("views","./views");
 app.use(express.urlencoded({
@@ -27,7 +18,7 @@ var dynamodb = new AWS.DynamoDB();
 var docClient = new AWS.DynamoDB.DocumentClient();
  
 
-function findUser (res) {
+function loadData (res) {
     let params = {
         TableName: "SanPham"
     };
@@ -46,7 +37,7 @@ function findUser (res) {
  
 }
 app.get("/",(req,res)=>{
-    findUser(res);
+    loadData(res);
 })
 
 app.listen(port, () => {
